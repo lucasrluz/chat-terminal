@@ -1,5 +1,6 @@
 import { login } from "./login";
 import { question } from "./readline";
+import { registration } from "./registration";
 
 export async function renderOptions() {
   while(true) {
@@ -15,5 +16,13 @@ export async function renderOptions() {
       var username: string = await login();
       break;
     }
+
+    if (option === '1') await registration();
+    
+    if (option === '2') {
+      process.stdout.write('\u001b[H\u001b[2J\u001b[3J');
+      return process.exit(0);
+    }
   }
+  return username;
 }
